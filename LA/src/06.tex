@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{LA Lecture 6}
+\author{swati.allabadi }
+
+\usepackage{amsmath}
+
+\begin{document}
+
+\maketitle
+
+\section{Topics Covered}
+\begin{enumerate}
+    \item Vector spaces and Null spaces
+    \item Column space of A : Solving Ax = B
+    \item Null space of A
+    
+\end{enumerate}
+\subsection{Vector Space Requirements}
+\newline
+For any 2 vectors, V and W lying in the space, V + W should also lie in the space. \newline
+For any vector V in the vector space, cV also lies in the vector space where c is any constant.
+\newline
+Above 2 points can be written together as, for any 2 vectors A and B lying in the vector space, $c_1$A + $c_2$B should also lie in the vector space, where $c_1$ and $c_2$ are any constants.
+
+\subsection{Sub Spaces:} Some vectors inside a vector space that forms a vector space of its own. 
+\newline
+Consider $R^3$ and 2 sub spaces of it. One being a plane, P and one being a line, L (not lying in the previous plane). Is $P \cup L$ a sub space?
+\newline
+No. Reason: For any 2 vectors, V and W lying in $P \cup L$, V + W may not lie in $P \cup L$. 
+\newline
+For given any 2 vector spaces $S_1$ and $S_2$, $S_1 \cap S_2$ always is a vector space. For any vectors V  and W lying in $S_1 \cap S_2$, cV and V + W lie in $S_1$ as well as $S_2$, where c is any constant. While $S_1 \cup S_2$ may or may not be a vector space. 
+\subsection{Column Spaces}
+\newline
+Consider a matrix A. For what values of b, does the system Ax = b has a solution?
+\newline
+We can solve Ax = b exactly when b lies in the column space of A, C(A) because it implies that b is a linear combination of the columns of A. \newline
+\textbf{Are the columns of a matrix independent?} (or) Does each column contribute something new? (or) Can we throw away some column(s) of the matrix and still have the same column space? \newline
+ Consider the matrix A =  \[
+\begin{bmatrix}
+1 & 1 & 2\\
+2& 1 & 3\\
+3 & 1 & 4\\
+4 & 1 & 5\\
+\end{bmatrix}
+\]
+The 3 columns of this matrix are dependent. 
+Col 1 + Col 2 = Col 3 of the matrix. Thus we can get any of the columns of matrix A using the rest 2 columns. 
+We will call column 1 and column 2 as pivot columns, while column 3 to be non pivot. It is just a convention to choose pivots whichever comes first in order.\newline
+The column space of A is a 2-d vector space. Hence, it's a plane.
+Since there are 4 components of each vector in A (or say A has 4 rows), C(A) is a subspace of $R^4$.
+\newline
+For an m*n  matrix, column space of a matrix is a subspace of $R^m$.
+\subsection{Null Space of a matrix} = All solution vectors, x = \[
+\begin{bmatrix}
+$x_1$\\
+$x_2$\\
+...\\
+$x_n$\\
+\end{bmatrix}
+\] for Ax = 0.  
+
+Null space of an m*n matrix is a subspace of $R^n$. \newline
+Why is null space has term 'space' in its name?
+It is because \textbf{null space is a sub space of $R^n$} where n is the number of columns in an m*n matrix. It is vector space because: Consider 2 solutions $x_1$ and $x_2$ of 
+Ax = 0. It implies $Ax_1 = 0$ and $Ax_2 = 0$. It implies  $A(x_1) + A(x_2) = 0$. It implies  $A(x_1 + x_2) = 0$. It follows from the distributive law.
+\\~\\
+We have seen two ways to obtain vector space. One is by taking all possible linear combinations of columns of a matrix. With this we get the column space. Second is by putting conditions which x should satisfy in Ax = 0. With this we get null space.
+\\~\\
+\textbf{Do the solutions of Ax = b for a non zero b, do they form a vector space? } No, because zero vector doesn't satisfy Ax = b for a  non zero b. And we can't get a vector space without including the origin.
+
+\end{document} 
