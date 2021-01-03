@@ -1,0 +1,134 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+
+\title{LA Lecture Notes}
+\author{swati.allabadi }
+
+
+\begin{document}
+
+\maketitle
+
+\section{Lecture 4}
+\subscetion{Topics Covered}
+\begin{enumerate}
+    \item Inverse of AB, $A^T$
+    \item Product of elimination matrices
+    \item A = LU (considering U is obtained without any row changes)
+    
+    
+\subsection{Inverse of AB}
+
+Consider A and B to be square invertible matrices, then what is the inverse of AB i.e. $(AB)^{-1} = ?$
+\\~\\
+Now, $B^{-1}A^{-1}AB  = I $. Also, $ABB^{-1}A^{-1} = I$. 
+\newline
+$\Rightarrow B^{-1}A^{-1}$ is the inverse of $AB$.
+\newline
+Considering A and B to be square matrices, implies their left and right inverses are same. 
+
+\subsection{Inverse of $A^T$}
+We know that $AA^{-1} = I$. Taking transpose on both sides we get,
+\newline
+$(A^{-1})^{T}A^T = I$.
+$\Rightarrow (A^T)^{-1} = (A^{-1})^{T} $.
+\newline
+Hence, for a single matrix transpose and inverse can be done in any order.
+
+\subsection{Product of elimination matrices (obtained without row changes)}
+From previous lectures, $EA = U $ where A is the matrix obtained from system of equations to be solved, E is elimination matrix and U is upper triangular matrix. We also have, $ A = LU$ where L is lower triangular matrix. Hence, $L = E^{-1}$.
+\newline
+A = \[ \begin{bmatrix}
+2 & 1\\
+8 & 7\\
+
+\end{bmatrix}
+\]
+\newline
+For this A, we get E = \[ \begin{bmatrix}
+1 & 0\\
+-4 & 1\\
+\end{bmatrix}
+\] and U = \[ \begin{bmatrix}
+2 & 1\\
+0 & 3\\
+\end{bmatrix}
+\]
+
+For this A and U, L = \[ \begin{bmatrix}
+1 & 0\\
+4 & 1\\
+\end{bmatrix}
+\]
+There is no significant difference between E and L i.e. there is no evident reason why we should prefer L over E (A = LU over EA = U).
+But it is there in a 3*3 matrix.
+For a 3*3 matrix, $E_{32}E_{31}E_{21}A = U$ is the equation. 
+Let $E_{31}$ be an identity matrix ,  $E_{32}$ = \[ \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & -5 & 1\\
+\end{bmatrix}
+\] and 
+$E_{21}$ = \[
+\begin{bmatrix}
+1 & 0 & 0\\
+-2 & 1 & 0\\
+0 & 0 & 1\\
+\end{bmatrix}
+\]
+$E_{32}E_{31}E_{21}$ =  $E_{32}E_{21}$ = \[
+\begin{bmatrix}
+1 & 0 & 0\\
+-2 & 1 & 0\\
+10 & -5 & 1\\
+\end{bmatrix}
+\]
+Now $L = E^{-1}$ = $E_{21}^{-1}E_{32}^{-1}$ 
+\newline
+We have $E_{21}^{-1}$ = \[
+\begin{bmatrix}
+1 & 0 & 0\\
+2 & 1 & 0\\
+0 & 0 & 1\\
+\end{bmatrix}
+\] and $E_{32}^{-1}$  = \[ \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 5 & 1\\
+\end{bmatrix}
+\]
+ $L = E^{-1}$ = $E_{21}^{-1}E_{32}^{-1}$ = \[
+\begin{bmatrix}
+1 & 0 & 0\\
+2 & 1 & 0\\
+0 & 5 & 1\\
+\end{bmatrix}
+\]
+Hence, if there are no row exchanges the multiplier goes directly into L.
+\newline
+Note that L has 1's on its diagonal. We can also decompose U into 2 matrices to get 1's on its diagonal.
+
+\subsection{How many operations (multiplication and subtraction) on an n*n matrix A to get L and U?}
+
+We need to perform $O(n)$ operations to make an element 0. Hence we perform $O(n^2)$ operations to get a pivot in a column. To be precise, we perform around $n^2 + (n-1)^2 + ... + 1^2 \approx 1/3n^2 = O(n^2)$ operations to get all the pivots.
+\\~\\
+Check if t should be $(n-1)^2 + ... + 1^2$ or $n^2 + (n-1)^2 + ... + 1^2$.
+
+
+\subsection{If row changes required (Permutation matrix P)}
+We can fix this with the help of permutation matrices. It's a matrix with the rows of identity matrix (in some order). Total no of permutation matrices for an n*n matrix is n!. We can call these n! matrices a group as the product of any 2 matrices of those is a matrix within those.  
+Note that, $P^{-1} = P^T$
+Hence, if row changes are required PA = LU. Thus we can first change the order of the rows and proceed to get L and U. 
+
+\subsection{$R^TR$ and $RR^T$ are symmetric matrices where R is any rectangular matrix}
+$(R^TR)^T = R^TR^{TT} = R^TR$ \newline
+$(RR^T)^T = R^{TT}R^T = RR^T$
+
+
+    
+\end{enumerate}
+
+
+\end{document}
