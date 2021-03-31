@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\title{LA Lecture 12}
+\author{swati.allabadi }
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Topics Covered}
+\begin{enumerate}
+    \item Graphs and Networks
+    \item Incidence Matrix
+    \item Kirchoff's laws
+\end{enumerate}
+
+\section{Incidence Matrix}
+Let us consider an example of a directed graph and then obtain its incidence  matrix. Example: The graph has 4 nodes a, b, c and d and it has 5 edges.
+\newline
+
+Edge 1: a $\rightarrow$ b
+Edge 2: b $\rightarrow$ c
+Edge 3: a $\rightarrow$ c
+Edge 4: a $\rightarrow$ d
+Edge 5: c $\rightarrow$ d
+
+The incidence matrix, A, of the given graph is:
+
+\begin{bmatrix}
+-1 & 1 & 0 & 0\\
+0 & -1 & 1 & 0\\
+-1 & 0 & 1 & 0\\
+-1 & 0 & 0 & 1\\
+0 & 0 & -1 & 1\\
+\end{bmatrix}
+In this matrix, each column represents a node while each row represents an edge.
+The first 3 edges of the graph forms a loop, hence the first three rows of the incidence matrix are dependent.
+\\~\\
+\textbf{But if we consider the direction, they don't form a loop but the first 3 rows are still dependent. Why?} Direction of the edge is not relevant to decide dependency. Hence, it is still considered as a loop.
+\newline
+Let's find the null space of A.
+Now, Ax = 
+\begin{bmatrix}
+x_2 - x_1\\
+x_3 - x_2\\
+x_3 - x_1\\
+x_4 - x_1\\
+x_4 - x_3
+\end{bmatrix}
+\newline
+N(A) = \begin{bmatrix}
+1\\
+1\\
+1\\
+1
+\end{bmatrix}
+In this lecture a analogy of the graph and electric circuit is drawn. Thus the solution to null space of A represents the values of x for which the potential difference between the nodes = 0. 
+Rank of A = 3.
+Basis of the column space of the given matrix is given by any three columns of the matrix.
+dim(N($A^T$)) = m -r = 2. 
+What does the values of y satisfying $A^Ty$ = 0 represents? y represents the current flowing through each edge. Thus, solution to $A^Ty = 0$ ensures that the net current passing through each node is 0 as charge doesn't accumulate at a node. (Need to verify this statement.) 
+In the lecture, the solution to  $A^Ty$ = 0 is calculated using Kerchoff's current law and not through matrix elimination. Special solution to null space is obtained by satisfying Kerchoff's current law on various loops. Further, the Euler's law is also being verified in our example, i.e., 
+#nodes - #edges + #loops = 1.
+
+(Not covering the techniques in detail in the notes as they didn't seem relevant.)
+
+\end{document}
+
