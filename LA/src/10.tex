@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{LA Lecture 10}
+\author{swati.allabadi }
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Topics Covered}
+
+\begin{enumerate}
+    \item 4 fundamental sub spaces of a matrix
+\end{enumerate}
+
+\subsection{Sub spaces of a matrix A}
+\begin{enumerate}
+    \item Column space C(A)
+    \item Null space N(A)
+    \item Row space = all combinations of the rows of A = all combinations of the columns of $A^T$ = $(C(A^T))$.
+    \item Null space of $A^T$ = $(N(A^T))$ = left null space of A.
+\end{enumerate}
+For an m*n matrix A
+\begin{enumerate}
+    \item C(A) is in $R^m$.
+    \item N(A) is in $R^n$.
+    \item $C(A^T)$ is in $R^n$.
+    \item $N(A^T)$ is in $R^m$.
+\end{enumerate}
+
+
+
+\subsection{Basis and Dimension of the spaces}
+\begin{enumerate}
+    \item Column space (C(A))
+\newline
+Its dimension is r (rank of A) and the pivot columns of A forms its basis.
+    \item Row space (C($A^T$))
+\newline
+Its dimension is r (rank of A). Its basis is explained in a while.
+\newline
+\textbf{Row space and column space have the same dimension.}
+    \item Null space N(A)
+\newline
+Its basis is the special solution and its dimension is n-r (number of free variables).
+\newline
+\textbf{Note:} Dimension of null space + dimension of row space = n-r + r = n. Also, both N(A) and $C(A^T)$ are in $R^n$. Now since dimension of column space = r and both column space and null space of $A^T$ lie in $R^m$, should the dimension of  null space of $A^T$  be m - r? Ans: Yes.
+    \item Left null space or Null space of $A^T$, $N(A^T)$
+\newline Its dimension is m-r, because $A^T$ has m variables and its rank is r. Hence it has (m-r) free variables.
+
+\textbf{Basis of row space}: 2 ways to obtain it. 
+\newline
+1) Perform row operations on $A^T$ and get it in rref form. We will know which all are the pivot columns of $A^T$ through the rref form and those columns of $A^T$ will form the row space of A.
+\newline
+2) If we have already performed row operations on A to get it in rref form, we don't need to repeat the same for $A^T$. Let rref form of A be R. 
+The first r (r = rank of A) rows of R form the basis of row space of A. They obviously form the basis for row space of R as well. 
+\newline
+The first r rows of A may or may not form the row space. 
+\\~\\
+\textbf{Why? We might have swapped the rows while getting R?}
+\\~\\
+ \textbf{$C(R^T) = C(A^T)$}. 
+But, \textbf{$C(A)  \neq R(A) $  } 
+i.e.  \textbf{row space of A and R are equal while column space of A and R may not be equal.}
+\newline
+\textbf{Why is null space of $A^T$ also called as left null space? }
+\newline
+Let, $A^Ty = 0$. Here y represents the null space of $A^T$. Taking transpose on both sides we get, $y^TA = 0^T$. Since, y is coming on the left when we try to get A in the equation, therefore, it is called the left null space.
+\\~\\
+\textbf{Basis of $N(A^T)$(null space of $A^T$):}
+To find its basis through rref form of A, we will tack on I alongwith A (as we did in Gauss-Jordan to calculate inverse of A). 
+\newline
+rref[$A_{m*n}$  $I_{m*m}$] \rightarrow [$R_{m*n}$ $E_{m*m}$]
+because EA = R.
+\\~\\
+(In case when A is square invertible matrix, E comes out to be $A^{-1}$.)
+\\~\\
+$E_{m*m}$[$A_{m*n}$ $I_{m*m}$] = [$R_{m*n}$ $E_{m*m}$]
+\\~\\
+The basis of left null space of A is given by the last (m-r) rows of E.
+Reason: The last (m-r) rows in R will be all zeroes and last (m-r) rows of E basically tells you what combination of rows of A will result in a all zeros row. Just like to find out the N(A), we find the combination of columns of A which results in all zeroes; similarly for N($A^T$), we need to find the combination of rows of A which results in all zeroes and hence the solution. 
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+\end{document}
+
