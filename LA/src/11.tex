@@ -1,0 +1,213 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{LA Lecture 11}
+\author{swati.allabadi }
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Topics Covered}
+
+\begin{enumerate}
+    \item Bases of new vector spaces
+    \item Rank one matrices
+    \item Small world graphs
+\end{enumerate}
+
+\section{Bases of new vector spaces:}
+\newline
+In the new vector space, the thing inside the space is not what we usually call vectors. It is still called vector space because we can add the objects inside the space and multiply them by scalar.
+\\~\\
+\textbf{Examples:} 1) M = space of all 3*3 matrices. We can multiply 2 of them together as well but we won't do that because that's not part of vector space picture. We can add 2 matrices and multiply any of them by scalar and will stay inside the vector space. 
+\newline
+Some subspaces of 3*3 matrices:
+\newline
+a) 3*3 symmetric matrices: If we multiply 2 3*3 symmetric matrices, the resulting matrix may not be symmetric but it doesn't matter.
+\newline
+b) 3*3 upper triangular matrices
+\\~\\
+\textbf{Natural basis of all 3*3 matrices(M):}
+
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+\end{bmatrix} , ... ,
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 1\\
+\end{bmatrix} form the basis for M.
+\newline
+The number of member in the basis = 9.\textbf{Hence the dimension of M is 9.}
+Our space is practically same as 9 dimension space. It's just that 9 numbers are written in a square.
+\\~\\
+\textbf{Natural basis of all 3*3 symmetric matrices(S):}
+\newline
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0\\
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 1\\
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 0\\
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 1\\
+0 & 0 & 0\\
+1 & 0 & 0\\
+\end{bmatrix} and 
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 1\\
+0 & 1 & 0\\
+\end{bmatrix} form the basis for S.
+\newline
+\textbf{Natural basis of all 3*3 upper triangular matrices(U):}
+
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 1\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0\\
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0\\
+\end{bmatrix} and 
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 1\\
+\end{bmatrix} form the basis for U.
+
+It is accidental that the basis of subspace U is contained in basis of M. It didn't happen for S.
+\newline
+\textbf{Intersection: What's S $\cap$ U?}
+S $\cap$ U = All 3*3 diagonal matrices. dim(S $\cap$ U) = 3.
+\newline
+\textbf{What's S $\cup$ U?}
+S $\cup$ U is not a subspace.
+\newline
+\textbf{Sum: What's S + U?}
+S + U = any element of S + any element of U.
+It's M i.e. all 3*3 matrices. Hence, dim(S+ U) = 9.
+\\~\\
+\textbf{dim(S) + dim(U) = dim(S $\cap$ U) +  dim( S + U)}
+This formula follows for any 2 subspaces.
+\\~\\
+2) One  more example of differential equation discussed.
+\newline
+Example: $d^2y/dx^2 + y = 0 $. Complete solution to given differential equation is $y = c_1Cos(x) + c_2Sin(x)$. It's a vector space. Basis for this vector space is Cos(x) and Sin(x) as these two are special solutions of it.
+Dim(Solution space) =2. Cos(x) and Sin(x) don't look like vectors (they look like functions) but we can call them vectors because we can add them and multiply by scalars, and that's all is required.
+
+\section{Rank one matrix}
+An example of rank 1 matrix:
+A = \begin{bmatrix}
+1 & 4 & 5\\
+2 & 8 & 10\\
+\end{bmatrix}. A basis for the row space of this matrix is 
+\begin{bmatrix}
+1 & 4 & 5\\
+\end{bmatrix}. A basis for the column space of this matrix is
+\begin{bmatrix}
+1 \\
+2\\
+\end{bmatrix}
+In this eg., A= \begin{bmatrix}
+1 \\
+2\\
+\end{bmatrix}\begin{bmatrix}
+1 & 4 & 5\\
+\end{bmatrix}.
+Every rank 1 matrix can be written in the form $UV^T$ where U and V are some column vectors.
+\\~\\
+Let's say we have a 5*17 matrix of rank 4, we can break that 5*17 matrix down as a combination of rank 1 matrices. We will need 4 such rank 1 matrices. Thus rank 1 matrices are the building blocks.
+\newline.
+Consider the example of M = all 5*17 matrices. Is the subset of all rank 4 matrices a subspace? Not necessarily.
+\newline
+\textbf{Rank(A + B) $\leq$ Rank (A) + Rank(B)}
+Thus, if we add 2 rank 4 matrices, its rank can be greater than 4. Hence, it's not a subspace.
+\\~\\
+Let's consider the example of $\mathbb{R}^4$. A typical vector in $\mathbb{R}^4$ is 
+\begin{bmatrix}
+v_1\\
+v_2\\
+v_3\\
+v_4
+\end{bmatrix}. Let's take the sub space, S, of vectors whose components add to 0, i.e., $v_1 + v_2 + v_3 + v_4 = 0$. They form a subspace because if we add 2 such vectors, it still satisfies the property and we multiply a vector by a scalar, it continues to satisfy the property.
+\textbf{S is the null space of which matrix A?}
+Now, Av = 0 where $v \in S$.
+Thus A = \begin{bmatrix}
+1 & 1 & 1 & 1\\
+\end{bmatrix}.
+Thus S = null space of A, \begin{bmatrix}
+1 & 1 & 1 & 1\\
+\end{bmatrix}
+rank of A = 1
+dim(N(A)) = n - r = 4 - 1 =3
+dim (C($A^T$)) = 1
+To find special solution to N(A), we look for free variables. Free variables are 2, 3 and 4.
+Hence N(A) = 
+\begin{bmatrix}
+-1\\
+1\\
+0\\
+0
+\end{bmatrix}, \begin{bmatrix}
+-1\\
+0\\
+1\\
+0
+\end{bmatrix}, and \begin{bmatrix}
+-1\\
+0\\
+0\\
+1
+\end{bmatrix}.
+\newline
+C(A) = $\mathbb{R}^1$. \newline
+N($A^T$) = {0} = only one point. \newline
+dim(C(A)) = 1 \newline
+dim(N($A^T$)) = m-r = 1-1 = 0.
+
+
+\end{document}
+
