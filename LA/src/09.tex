@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\title{LA Lecture 9}
+\author{swati.allabadi }
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Topics Covered}
+\begin{enumerate}
+    \item Linear independence/ dependence
+    \item Spanning a space
+    \item Basis for a sub space/ vector space
+    \item Dimension of the sub space
+    
+\end{enumerate}
+
+\subsection{Linear Independence}
+Suppose A is an m*n matrix where $m < n$ (i.e. there are more unknowns than equations), then there are \textbf{non zero solution(s) to Ax = 0 because there will be atleast n - m free variables.}
+\newline
+\textbf{Independence:} Vectors $x_1, x_2, ... , x_n$ are (linearly) independent if no combination of them gives us the zero vector (except the zero combination).
+\newline
+$c_1x_1 + c_2x_2 + ... + c_nx_n \neq 0$ (except for all $c_i's = 0$).
+\\~\\
+Example: Let $V_1 = V, V_2 = 2V$, are they independent (where V is some vector)?
+Ans: No, because $V_2$ is twice of $V_1$. Thus, $2V_1 - V_2 = 0$ is the non zero combination which results in a zero vector.
+\newline
+Eg: Let $V_1 = V, V_2 = 0$, are they independent?
+Ans:No, because $0*V_1 + cV_2 = 0$ where c can take any real value. 
+\textbf{If there's a zero vector in the given set of vectors then independence is dead.}
+\\~\\
+Let $V_1 =  \begin{bmatrix} 1 \\ 2 \end{bmatrix} $and $V_2 = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$, $V_1$ and $V_2$ are independent. 
+\newline
+Let $V_3 = \begin{bmatrix} 2.5 \\ -1 \end{bmatrix}$. Even without solving, we can tell that $V_1$, $V_2$ and $V_3$ are linearly dependent because if we obtain matrix A whose vectors are $V_1, V_2 and V_3$, then A is a 2*3 matrix, hence there are 3 unknowns and 2 equations. So, we have atleast 1 (3-2)
+free variable. Hence, we have non zero N(A). Hence, $V_1, V_2 and V_3$ are dependent.
+\newline 
+Even if $n \leq m$, but the N(A) is non zero, it implies the vectors obtained from the columns of A are linearly dependent. In this case, rank of A $<$ n and there are free variables.
+\newline
+They are independent if N(A) = {zero vector}. Rank of A in this case = n and There are no free variables.
+
+\subsection{Spanning a Space}
+Vectors $v_1, v_2, ... , v_l$ span a space means the space consist of all combinations of that vectors.
+
+For a given bunch of vectors if we say 'S' is the space that they span, then 'S' is the smallest space that they span because any space with those vectors in it must have all the combinations of those vectors in it. If we stop there, we have the smallest space with all those vectors in it.
+
+\subsection{Basis of a vector space}
+Basis for a space is a sequence of vectors with 2 properties:
+\begin{enumerate}
+    \item They are independent.
+    \item They span the space.
+    
+\end{enumerate}
+Example: basis of space $\mathbb{R}^3$? One basis is 
+\begin{bmatrix}
+1 \\
+0 \\
+0\\
+\end{bmatrix}, 
+\begin{bmatrix}
+0 \\
+1 \\
+0\\
+\end{bmatrix} and
+\begin{bmatrix}
+0 \\
+0 \\
+1\\
+\end{bmatrix}.
+They form a basis as they are independent.
+\newline
+Another basis for $\mathbb{R}^3$:
+\begin{bmatrix}
+1\\
+1\\
+2\\
+\end{bmatrix}, 
+\begin{bmatrix}
+2\\
+2\\
+5\\
+\end{bmatrix} and 
+\begin{bmatrix}
+3\\
+2\\
+20\\ 
+\end{bmatrix}.
+\newline
+Do \begin{bmatrix}
+1\\
+1\\
+2\\
+\end{bmatrix} and 
+\begin{bmatrix}
+2\\
+2\\
+5\\
+\end{bmatrix} form a basis for some space?
+These vectors are independent and they span a plane in $\mathbb{R}^2$. So, they form a basis for the plane they span. 
+\newline
+A set of vectors which are independent form a basis for the column space spanned by those columns.
+\newline
+Any invertible 3*3 matrix forms a basis for $\mathbb{R}^3$.
+\newline
+\textbf{Given a space, every basis for the space has the same number of vectors. }
+For $\mathbb{R}^3$, there will be 3 vectors in any of its basis. For $\mathbb{R}^n$, there will be n vectors in any of its basis.
+\\~\\
+For $\mathbb{R}^n$, n vectors give the basis if the n*n matrix formed using these vectors as columns is invertible.
+
+\subsection{Dimension of a space:} 
+\textbf{Definition of dimension:} Number of vectors in any basis of that space.
+\\~\\
+Let A be a matrix.
+\newline
+\textbf{rank(A) = \#pivot columns = dimension of C(A)}
+where C(A) represents the column space of A.
+\newline
+dim C(A) = r
+\\~\\
+\textbf{dim N(A) = \#free variables } where N(A) represents the null space of A.
+
+
+
+
+\end{document}
+
