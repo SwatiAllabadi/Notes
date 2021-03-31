@@ -1,0 +1,153 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{LA Lecture 7}
+\author{swati.allabadi }
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Topics Covered}
+\begin{enumerate}
+    \item Computing the null space (Ax = 0)
+    \item Pivot variables-free variables
+    \item Special solutions-rref(A) = R
+    
+\end{enumerate}
+\textbf{Rank} of a matrix = Number of pivots in that matrix. 
+\subsection{Algorithm to obtain null space of a matrix }
+Note that the given matrix (A) can be a rectangular matrix.
+Steps of the algorithm are as follows:
+\begin{enumerate}
+    \item Apply elimination procedure on the matrix A. The form of the matrix obtained through this procedure is termed as Echelon form.
+    \item Obtain Row Reduced Echelon form (rref) through this matrix.
+    \item The null space is all the linear combinations of the columns of matrix \[ \begin{bmatrix}
+    -F\\
+    I\\
+    \end{bmatrix} \]
+    
+    where I is the identity matrix and F is the coefficients of free variables in the rref.
+    \newline
+    Number of columns in this matrix = Number of free  variables.
+\end{enumerate}
+Some key point regarding the algorithm :
+\begin{enumerate}
+    \item In step 1 of the algo, we don't have to do  row exchanges even if we get 0's in the pivot positions.
+    \textbf{Verify this for some other example.}
+    \item With elimination we are not changing the null space. Since the solution to Ax = 0 won't change with it as the same steps are applied on the RHS.
+    What changes with elimination is the column space.
+    \item The columns containing the pivot are termed as \textbf{pivot columns} and the corresponding variables are termed as \textbf{pivot variables} while the remaining columns are termed as \textbf{free columns} and the corresponding variables are termed as \textbf{free variables}. They are termed as free because we can assign any value to the variables associated with those columns. And then solve for the variables associated with pivot variables.
+    
+\end{enumerate}
+Let's apply this algorithm on an instance.
+Let A = \[ 
+        \begin{bmatrix}
+        1 & 2 & 2 & 2\\
+        2 & 4 & 6 & 8\\
+        3 & 6 & 8 & 10\\
+        \end{bmatrix}
+        \]
+
+Applying step $E_{21}$ and $E_{31}$ on A we get :
+\[ 
+        \begin{bmatrix}
+        1 & 2 & 2 & 2\\
+        0 & 0 & 2 & 4\\
+        0 & 0 & 2 & 4 \\
+        \end{bmatrix}
+        \]
+        
+The first pivot is at $A_{11}$ and second is at $A_{23}$. Thus we do $E_{33}$ in the next step and get :
+
+        \begin{bmatrix}
+        1 & 2 & 2 & 2\\
+        0 & 0 & 2 & 4\\
+        0 & 0 & 0 & 0 \\
+        \end{bmatrix}
+         \textbf{= U}, which is called the \textbf{echelon form}. 
+Clearly, the number of pivots in this matrix = 2, which is called the \textbf{rank}  of the matrix. \newline
+Ux = 0 looks like :\\~\\
+$x_1 + 2x_2 + 2x_3 + 2x_4 = 0$ \newline
+$2x_3 + 4x_4 = 0$ \newline
+Let's try to obtain null space using Ux = 0: \newline
+Since $x_2$ and $x_4$ are free variables we can assign any values to them. Let's assign 1 and 0 to them respectively. We get  : \\~\\
+$x_1 + 2 + 2x_3 = 0$ \newline
+$2x_3 = 0$ \newline
+It implies $x_3$ = 0 and $x_1$ = -2. 
+\newline
+Now, let's assign 0 and 1 to $x_2$ and $x_4$ respectively. We get  : \\~\\
+$x_1 + 2x_3 + 2 = 0$ \newline
+$2x_3 + 4 = 0$ \newline
+It implies $x_3$ =-2 and $x_1 $ = 2.
+
+\newline
+What we get is 
+
+c\begin{bmatrix}
+-2 \\ 1 \\ 0 \\0
+\end{bmatrix}  and
+d\begin{bmatrix}
+2 \\ 0 \\ -2 \\1
+\end{bmatrix} are solutions of Ax = 0 or Ux = 0 where c and d are any constants.
+\\~\\
+Thus, the linear combinations of columns of 
+\begin{bmatrix}
+-2 & 2\\ 
+1  & 0\\
+0  & -2 \\
+0  & 1
+\end{bmatrix} is the null space of A.
+\newline
+Let us obtain row reduced echelon form of the above matrix. In this we try to get zeroes above pivot positions as well and make pivot elements = 1.
+\newline
+Performing $E_{13}$ on the above matrix we get: \newline
+\[ 
+        \begin{bmatrix}
+        1 & 2 & 0 & -2\\
+        0 & 0 & 2 & 4\\
+        0 & 0 & 0 & 0 \\
+        \end{bmatrix}
+        \]
+        Making pivot at $A_{23}$ = 1 we get
+         \[ 
+        \begin{bmatrix}
+        1 & 2 & 0 & -2\\
+        0 & 0 & 1 & 2\\
+        0 & 0 & 0 & 0 \\
+        \end{bmatrix}
+        \] = R (in rref)
+        The solutions to Ax = 0, Ux = 0 and Rx = 0 are all the same. The equations obtained from Rx = 0 are as : \newline
+$x_1 + 2x_2  - 2x_4 = 0$ \newline
+$1x_3 + 2x_4 = 0$ \newline
+Let's look at the coefficients in a rearranged manner. \newline
+
+\[ 
+        \begin{bmatrix}
+        1 & 0 &  & &  &2 & -2\\
+        0 & 1 &  & &  & 0 &  2\\
+        Identity \ part &&&&&  Free\ part\\
+        
+        \end{bmatrix}
+        \]
+        
+If we write in the form,  \begin{bmatrix}
+    -F\\
+    I\\
+    \end{bmatrix} , we get
+     \begin{bmatrix}
+    -2 & 2\\
+    0 & -2\\
+    1 & 0\\
+    0 & 1\\
+    
+    \end{bmatrix}  which is same as the columns of the matrix obtained above (in a reordered form) as the solution of null space of A.
+    \newline
+    What do we get as null space of $A^T$? What is the rank of $A^T$?
+    \textbf{complete notes and verify this lecture from book}
+
+ 
+\end{document}
+
